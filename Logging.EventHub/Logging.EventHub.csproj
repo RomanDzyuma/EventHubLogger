@@ -63,6 +63,8 @@
     <Compile Include="EventHubClientAdapter.cs" />
     <Compile Include="IEventHubClient.cs" />
     <Compile Include="EventHubTraceListener.cs" />
+    <Compile Include="JsonTraceListener.cs" />
+    <Compile Include="LogMessageEvent2.cs" />
     <Compile Include="LogMessageEvent.cs" />
     <Compile Include="MockEventHubClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

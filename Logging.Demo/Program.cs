@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.EnterpriseLibrary.Logging;
+﻿using Logging.EventHub;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,8 +16,8 @@ namespace Logging.Demo
             var logger = new LogWriterFactory().Create();
             if (logger.IsLoggingEnabled())
             {
-                logger.Write("TEST");
-                logger.Write("TEST2");
+                logger.Write(new LogMessageEvent { InstanceId = "instance1", MachineName = "machine1", Value = "value1" });
+                logger.Write(new LogMessageEvent2 { InstanceId = "instance1", MachineName = "machine1", Value2 = "value1" });
             }
             else
             {

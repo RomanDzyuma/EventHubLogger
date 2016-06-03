@@ -1,20 +1,25 @@
-﻿using Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners;
-using Microsoft.ServiceBus.Messaging;
-
-using Newtonsoft.Json;
-
-using System;
-using System.Configuration;
-using System.Text;
-
-namespace Logging.EventHub
+﻿namespace Logging.EventHub
 {
+    using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
+    using Microsoft.Practices.EnterpriseLibrary.Logging;
+    using Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners;
+    using Microsoft.ServiceBus.Messaging;
+
+    using Newtonsoft.Json;
+
+    using System;
+    using System.Configuration;
+    using System.Diagnostics;
+    using System.Text;
+
+    [ConfigurationElementType(typeof(CustomTraceListener))]
+
     public class EventHubTraceListener : CustomTraceListener
     {
         private IEventHubClient client;
         private readonly string instanceId;
 
-        public EventHubTraceListener() : this(CreateEventHub())
+        public EventHubTraceListener() : this(CreateMockEventHub())
         {
             this.instanceId = ConfigurationManager.AppSettings["InstanceId"];
             CreateEventHub();
@@ -48,20 +53,34 @@ namespace Logging.EventHub
         {
             Log(message);
         }
-
-
-
+        
         private void Log(string message)
         {
-            var eventData = new EventData(
-                Encoding.Default.GetBytes(
-                    JsonConvert.SerializeObject(new LogMessageEvent
-                      {
-                          InstanceId = instanceId,
-                          MachineName = Environment.MachineName,
-                          Value = message
-                      })));
+            var eventData = new EventData(Encoding.Default.GetBytes(message));
             client.SendAsync(eventData);
         }
-    }
+
+
+        public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
+        {
+            if ((this.Filter == null) || this.Filter.ShouldTrace(eventCache, source, eventType, id, null, null, data, null))
+            {
+                if (data is LogEntry)
+                {
+                    if (Formatter != null)
+                    {
+                        Write(Formatter.Format(data as LogEntry));
+                    }
+                    else
+                    {
+                        base.TraceData(eventCache, source, eventType, id, data);
+                    }
+                }
+                else
+                {
+                    base.TraceData(eventCache, source, eventType, id, data);
+                }
+            }
+            }
+        }
 }
