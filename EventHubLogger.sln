@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.EventHub", "Logging
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.Demo", "Logging.Demo\Logging.Demo.csproj", "{7FE132CE-5498-4228-8A0F-8525E5AA741B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHubDataGenerator", "EventHubDataGenerator\EventHubDataGenerator.csproj", "{4B64A39F-8339-478C-AAB3-9C30207A083A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7FE132CE-5498-4228-8A0F-8525E5AA741B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7FE132CE-5498-4228-8A0F-8525E5AA741B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FE132CE-5498-4228-8A0F-8525E5AA741B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B64A39F-8339-478C-AAB3-9C30207A083A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B64A39F-8339-478C-AAB3-9C30207A083A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B64A39F-8339-478C-AAB3-9C30207A083A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B64A39F-8339-478C-AAB3-9C30207A083A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,9 +5,6 @@
     using Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners;
     using Microsoft.ServiceBus.Messaging;
 
-    using Newtonsoft.Json;
-
-    using System;
     using System.Configuration;
     using System.Diagnostics;
     using System.Text;
@@ -21,13 +18,13 @@
 
         public EventHubTraceListener() : this(CreateMockEventHub())
         {
-            this.instanceId = ConfigurationManager.AppSettings["InstanceId"];
+            instanceId = ConfigurationManager.AppSettings["InstanceId"];
             CreateEventHub();
         }
 
         public EventHubTraceListener(IEventHubClient hubClient)
         {
-            this.client = hubClient;
+            client = hubClient;
         }
 
         private static IEventHubClient CreateMockEventHub()
@@ -63,7 +60,7 @@
 
         public override void TraceData(TraceEventCache eventCache, string source, TraceEventType eventType, int id, object data)
         {
-            if ((this.Filter == null) || this.Filter.ShouldTrace(eventCache, source, eventType, id, null, null, data, null))
+            if ((Filter == null) || Filter.ShouldTrace(eventCache, source, eventType, id, null, null, data, null))
             {
                 if (data is LogEntry)
                 {

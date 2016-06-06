@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Logging.EventHub")]
+[assembly: AssemblyTitle("EventHubDataGenerator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Logging.EventHub")]
+[assembly: AssemblyProduct("EventHubDataGenerator")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("121fab3c-3ad7-4858-ac15-2dd75f563d7c")]
+[assembly: Guid("4b64a39f-8339-478c-aab3-9c30207a083a")]
 
 // Version information for an assembly consists of the following four values:
 //

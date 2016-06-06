@@ -4,16 +4,16 @@ namespace Logging.EventHub
 {
     public class EventHubClientAdapter : IEventHubClient
     {
-        private EventHubClient client;
+        private readonly EventHubClient _client;
 
         public EventHubClientAdapter(EventHubClient client)
         {
-            this.client = client;
+            _client = client;
         }
 
         public void SendAsync(EventData eventData)
         {
-            client.SendAsync(eventData);
+            _client.SendAsync(eventData);
         }
     }
 }
